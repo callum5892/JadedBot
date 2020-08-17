@@ -14,15 +14,12 @@ import discord
 import requests
 import json
 import praw
+import configparser
 from jones import quotes
 from random import randint
 from youtubesearchpython import SearchVideos
 from discord.ext import commands
 from bs4 import BeautifulSoup
-
-TOKEN = ""
-REDDIT_ID = ""
-REDDIT_SECRET = ""
 
 bot = commands.Bot(command_prefix='!', description="Jaded Bot")
 
@@ -101,5 +98,12 @@ async def on_message(message):
         await message.channel.send('```Command List:\n!everquest <search> - Searches P99 Wiki and returns first result.\n!youtube <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n```')
         await bot.process_commands(message)
 
+
+config = configparser.ConfigParser()
+config.read('configfile')
+
+TOKEN = config['JadedBot']['TOKEN']
+REDDIT_ID = config['JadedBot']['REDDIT_ID']
+REDDIT_SECRET = config['JadedBot']['REDDIT_SECRET']
 
 bot.run(TOKEN)

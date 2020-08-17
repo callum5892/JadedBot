@@ -6,9 +6,8 @@ Install the dependencies with
 
 `$ pip3 install -r requirements.txt`
 
-Open `jaded.py` with a text editor and edit `TOKEN=""` with your Discord token or the bot will not run.
-
-If you want reddit functionality to work you will also need to set `REDDIT_ID = ""` and `REDDIT_SECRET = ""`. 
+The `configfile` file is how you configure the Discord API Key and Reddit keys if you want functionality.
+Simply edit the configfile and it will be loaded in at runtime.
 
 Search praw login for their guide on that.
 
