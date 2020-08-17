@@ -8,7 +8,9 @@ Install the dependencies with
 
 Open `jaded.py` with a text editor and edit `TOKEN=""` with your Discord token or the bot will not run.
 
-If you want reddit functionality to work you will also need to set `REDDIT_ID = ""` and `REDDIT_SECRET = ""`. Search praw login for their guide on that.
+If you want reddit functionality to work you will also need to set `REDDIT_ID = ""` and `REDDIT_SECRET = ""`. 
+
+Search praw login for their guide on that.
 
 ### Running the bot
 `$ python3 jaded.py`
