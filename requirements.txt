@@ -3,3 +3,4 @@ discord.py==1.4.1
 hjson==3.0.1
 requests==2.22.0
 youtube-search-python==1.2.8
+praw==7.1.0
