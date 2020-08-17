@@ -30,12 +30,15 @@ def wiki_search(search, wiki):
     if wiki == 'ck2':
         end_url = 'https://ck2.paradoxwikis.com'
         query_url = 'https://ck2.paradoxwikis.com/index.php?search={0}&title=Special:Search&profile=default&fulltext=1'.format(search.replace(" ", "+"))
-    page = requests.get(query_url).text
-    soup = BeautifulSoup(page, 'html.parser')
-    result = soup.find(class_="mw-search-result-heading")
-    end_string = str(result.select_one("a")['href'])
+    try:
+        page = requests.get(query_url).text
+        soup = BeautifulSoup(page, 'html.parser')
+        result = soup.find(class_="mw-search-result-heading")
+        end_string = str(result.select_one("a")['href'])
     
-    return end_url + end_string
+        return end_url + end_string
+    except AttributeError:
+        return "Failed to find that page, Sorry."
 
 
 @bot.command()
