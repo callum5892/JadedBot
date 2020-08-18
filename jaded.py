@@ -90,6 +90,16 @@ async def redpill(ctx):
     random_num = randint(0, len(quotes))
     await ctx.send(quotes[random_num])
 
+@bot.command(pass_context=True)
+async def join(ctx):
+    channel = ctx.message.author.voice.voice_channel
+    await client.join_voice_channel(channel)
+
+@bot.command(pass_context=True)
+async def leave(ctx):
+    server = ctx.message.server
+    voice_client = client.voice_client_in(server)
+    await voice_client.disconnect()
 
 @bot.listen()
 async def on_message(message):
