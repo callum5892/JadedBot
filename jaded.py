@@ -15,6 +15,7 @@ import requests
 import json
 import praw
 import configparser
+import youtube_dl
 from jones import quotes
 from random import randint
 from youtubesearchpython import SearchVideos
@@ -93,22 +94,28 @@ async def redpill(ctx):
     random_num = randint(0, len(quotes))
     await ctx.send(quotes[random_num])
 
-@bot.command(pass_context=True)
-async def join(ctx):
-    channel = ctx.message.author.voice.voice_channel
-    await client.join_voice_channel(channel)
+@bot.command()
+async def join(ctx, channel: discord.VoiceChannel="Jaded Bot Audio Room"):
+    channel = ctx.author.voice.channel
+    await channel.connect()
 
-@bot.command(pass_context=True)
+@bot.command()
 async def leave(ctx):
-    server = ctx.message.server
-    voice_client = client.voice_client_in(server)
-    await voice_client.disconnect()
+    await ctx.voice_client.disconnect()
 
+
+@bot.command()
+async def nobodyhere(ctx):
+    source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('nobody.webm'))
+    ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
+    ctx.voice_client.source.volume = 30
+
+        
 @bot.listen()
 async def on_message(message):
     if "jaded bot" in message.content.lower():
         # in this case don't respond with the word "Tutorial" or you will call the on_message event recursively
-        await message.channel.send('```Command List:\n!everquest <search> - Searches P99 Wiki and returns first result.\n!youtube <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n```')
+        await message.channel.send('```Command List:\n!everquest <search> - Searches P99 Wiki and returns first result.\n!youtube <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!nobodyhere - There is nobody here.```')
         await bot.process_commands(message)
 
 
