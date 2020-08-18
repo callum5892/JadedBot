@@ -105,8 +105,8 @@ async def on_message(message):
 config = configparser.ConfigParser()
 config.read('configfile')
 
-TOKEN = config['JadedBot']['TOKEN'].replace('"', '')
-REDDIT_ID = config['JadedBot']['REDDIT_ID'].replace('"', '')
-REDDIT_SECRET = config['JadedBot']['REDDIT_SECRET'].replace('"', '')
+TOKEN = config['JadedBot']['TOKEN']
+REDDIT_ID = config['JadedBot']['REDDIT_ID']
+REDDIT_SECRET = config['JadedBot']['REDDIT_SECRET']
 
 bot.run(TOKEN)
