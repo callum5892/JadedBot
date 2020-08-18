@@ -11,10 +11,12 @@ Simply create a textfile called `configfile` in the same directory as `jaded.py`
 
 ```
 [JadedBot]
-TOKEN = ""
-REDDIT_ID = ""
-REDDIT_SECRET = ""
+TOKEN =  
+REDDIT_ID = 
+REDDIT_SECRET =
 ```
+
+Note: Don't add in quotation marks in the configfile. `TOKEN = t0ken` is how it should look.
 
 Search praw login for their guide on getting the Reddit end of things up and running.
 
