@@ -114,10 +114,14 @@ async def nobodyhere(ctx):
     except AttributeError:
         await ctx.send("Join me to a channel with !join first.")
 
+@bot.command()
+async def audiophile(ctx):
+    await ctx.send(file=discord.File('audiophile.jpg'))
+
 @bot.listen()
 async def on_message(message):
     if "jaded bot" in message.content.lower():
-        await message.channel.send('```Command List:\n!everquest <search> - Searches P99 Wiki and returns first result.\n!youtube <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!nobodyhere - There is nobody here.```')
+        await message.channel.send('```Command List:\n!everquest <search> - Searches P99 Wiki and returns first result.\n!youtube <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!nobodyhere - There is nobody here.\n!audiophile - Inserts man listening to Edd Ed and Eddy Music.```')
         await bot.process_commands(message)
 
 
