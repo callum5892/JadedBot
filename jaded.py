@@ -14,7 +14,6 @@ import discord
 import requests
 import json
 import praw
-import asyncio
 import configparser
 import youtube_dl
 from jones import quotes
@@ -24,8 +23,6 @@ from discord.ext import commands
 from bs4 import BeautifulSoup
 
 bot = commands.Bot(command_prefix='!', description="Jaded Bot")
-
-ytdl = youtube_dl.YoutubeDL()
 
 def wiki_search(search, wiki):
     if wiki == 'everquest':
