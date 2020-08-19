@@ -6,6 +6,8 @@ Install the dependencies with
 
 `$ pip3 install -r requirements.txt`
 
+You will also need ffmpeg on the backend system.
+
 The `configfile` file is how you configure the Discord API Key and Reddit keys if you want reddit functionality.
 Simply create a textfile called `configfile` in the same directory as `jaded.py` like the following:
 
