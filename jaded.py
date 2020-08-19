@@ -76,14 +76,11 @@ async def shitpost(ctx):
     submission = reddit.subreddit("copypasta").hot(limit=100)
     for i, post in enumerate(submission):
         if i == random_num:
-            if (len(post.selftext) > 2000):
-                a,b = post.selftext[:len(post.selftext)/2], post.selftext[len(post.selftext)/2:]
-                await ctx.send(post.title)
-                await ctx.send(a)
-                await ctx.send(b)
-            else:
+            try:
                 await ctx.send(post.title)
                 await ctx.send(post.selftext)
+            except:
+                await ctx.send('An error occured sending the post (too long) try again.')
 
 @bot.command()
 async def redpill(ctx):
