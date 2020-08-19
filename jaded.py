@@ -83,6 +83,17 @@ async def shitpost(ctx):
                 await ctx.send('An error occured sending the post (too long) try again.')
 
 @bot.command()
+async def greentext(ctx):
+    reddit = praw.Reddit(client_id=REDDIT_ID, client_secret=REDDIT_SECRET, user_agent="jadedbot")
+    random_num = randint(0, 99)
+    submission = reddit.subreddit("greentext").hot(limit=100)
+    for i, post in enumerate(submission):
+        if i == random_num:
+            try:
+                await ctx.send(post.url)
+            except:
+                await ctx.send('An error occured sending the image try again.')
+@bot.command()
 async def redpill(ctx):
     random_num = randint(0, len(quotes))
     await ctx.send(quotes[random_num])
