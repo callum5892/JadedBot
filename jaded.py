@@ -14,6 +14,7 @@ import discord
 import requests
 import json
 import praw
+import asyncio
 import configparser
 import youtube_dl
 from jones import quotes
@@ -23,6 +24,8 @@ from discord.ext import commands
 from bs4 import BeautifulSoup
 
 bot = commands.Bot(command_prefix='!', description="Jaded Bot")
+
+ytdl = youtube_dl.YoutubeDL()
 
 def wiki_search(search, wiki):
     if wiki == 'everquest':
@@ -36,7 +39,6 @@ def wiki_search(search, wiki):
         soup = BeautifulSoup(page, 'html.parser')
         result = soup.find(class_="mw-search-result-heading")
         end_string = str(result.select_one("a")['href'])
-    
         return end_url + end_string
     except AttributeError:
         return "Failed to find that page, Sorry."
@@ -45,7 +47,6 @@ def wiki_search(search, wiki):
 @bot.command()
 async def everquest(ctx, *, search):
     eq_string = wiki_search(search, 'everquest')
-
     await ctx.send('' + eq_string)
 
 
@@ -60,7 +61,6 @@ async def youtube(ctx, *, search):
 @bot.command()
 async def ck2(ctx, *, search):
     ck_string = wiki_search(search, 'ck2')
-
     await ctx.send('' + ck_string)
     
 @bot.command()
@@ -88,7 +88,6 @@ async def shitpost(ctx):
                 await ctx.send(post.title)
                 await ctx.send(post.selftext)
 
-
 @bot.command()
 async def redpill(ctx):
     random_num = randint(0, len(quotes))
@@ -96,25 +95,31 @@ async def redpill(ctx):
 
 @bot.command()
 async def join(ctx, channel: discord.VoiceChannel="Jaded Bot Audio Room"):
-    channel = ctx.author.voice.channel
-    await channel.connect()
+    try:
+        channel = ctx.author.voice.channel
+        await channel.connect()
+    except AttributeError:
+        await ctx.send("You're not in a channel.")
 
 @bot.command()
 async def leave(ctx):
-    await ctx.voice_client.disconnect()
-
+    try:
+        await ctx.voice_client.disconnect()
+    except AttributeError:
+        await ctx.send("I'm not currently in a channel.")
 
 @bot.command()
 async def nobodyhere(ctx):
-    source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('nobody.webm'))
-    ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
-    ctx.voice_client.source.volume = 30
+    try:
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('nobody.webm'))
+        ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
+        ctx.voice_client.source.volume = 30
+    except AttributeError:
+        await ctx.send("Join me to a channel with !join first.")
 
-        
 @bot.listen()
 async def on_message(message):
     if "jaded bot" in message.content.lower():
-        # in this case don't respond with the word "Tutorial" or you will call the on_message event recursively
         await message.channel.send('```Command List:\n!everquest <search> - Searches P99 Wiki and returns first result.\n!youtube <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!nobodyhere - There is nobody here.```')
         await bot.process_commands(message)
 
