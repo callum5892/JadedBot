@@ -38,4 +38,4 @@ Commands:
 - !shitpost - Professionally starts shitposting (Posts a random post from /r/copypasta).
 - !redpill - Drops an Alex Jones quote.
 - !greentext - Inserts greentext (from /r/greentext).
-- ! -audiophile - Inserts audiofile meme.
+- !audiophile - Inserts audiofile meme.
