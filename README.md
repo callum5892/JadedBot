@@ -1,43 +1,41 @@
-# JadedBot.
-JadedBot is a simple Discord bot written in Python3+
+### Installation.
 
-### Install dependencies and setup.
-Install the dependencies with
+The easiest time you'll have installing this bot is in a UNIX like environment such a Linux/BSD.
 
-`$ pip3 install -r requirements.txt`
+You made need sudo access for pip3 access aswell as ffmpeg installed on your system if you want to play music over voice channels.
 
-You will also need ffmpeg on the backend system.
+```
+$ git clone https://github.com/Virtual-/JadedBot
+$ cd JadedBot
+$ pip3 install -r requirements.txt
+$ touch configfile
+```
 
-The `configfile` file is how you configure the Discord API Key and Reddit keys if you want reddit functionality.
-Simply create a textfile called `configfile` in the same directory as `jaded.py` like the following:
+Notice at the end we created a configfile. This is the file that will hold the settings we need in order for the bot to work properly so edit the file and input the following:
 
 ```
 [JadedBot]
-TOKEN =  
-REDDIT_ID = 
-REDDIT_SECRET =
+TOKEN = DISCORDTOKENHERE
+REDDIT_ID = REDDITTOKENHERE
+REDDIT_SECRET = REDDITSECRETHERE
 ```
 
-Note: Don't add in quotation marks in the configfile. `TOKEN = t0ken` is how it should look.
+These entries in the file need to be filled, the top `TOKEN` is your discord API key. The following two are only necessary if you want reddit functionality. If you want that follow this [guide](https://praw.readthedocs.io/en/latest/getting_started/authentication.html).
 
-Search praw login for their guide on getting the Reddit end of things up and running.
+Start up the program with `$ python3 jaded.py`. It's best to run this in the background somehow, there are various ways to do this on Linux/BSD systems with GNU Screen, Tmux or simply running `$ python3 jaded.py &`.
 
-### Running the bot.
-`$ python3 jaded.py`
 
-### Using the bot.
-
-Once the bot is up and running and you've added it into Discord when the bot is mentioned in chat it will give you a list of commands.
+### Usage
 
 Commands:
 - !youtube <search> - Searches YouTube and returns the first video found.
 - !ck2 <search> - Searches the Crusader Kings II Wiki and returns the first page.
 - !everquest <search> - Searches the Project 1999 Wiki and returns the first page. 
 - !vaporwave - Returns a random vaporwave themed video from youtube.
+- !join - Joins the voice channel of the user who typed the command.
+- !leave - Leaves the current channel the bot is in.
+- !nobodyhere - Starts playing nobodyhere.
 - !shitpost - Professionally starts shitposting (Posts a random post from /r/copypasta).
 - !redpill - Drops an Alex Jones quote.
-- !join - Joins the voice channel you're currently in.
-- !leave - Leaves the voice channel the bot is in.
-- !nobodyhere - Plays nobody here if the bot is in a voice channel.
-- !audiophile - Inserts a meme about audiophiles.
-- !greentext - Pulls a random greentext image (from /r/greentext).
+- !greentext - Inserts greentext (from /r/greentext).
+- ! -audiophile - Inserts audiofile meme.
