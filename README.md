@@ -47,4 +47,3 @@ Commands:
 =======
 - !greentext - Inserts greentext (from /r/greentext).
 - !audiophile - Inserts audiofile meme.
->>>>>>> 35276e1fd7b6c691e1d5fa1a7acfb61de48a96ff
