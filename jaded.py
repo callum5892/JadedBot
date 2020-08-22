@@ -81,6 +81,8 @@ async def shitpost(ctx):
                 await ctx.send(post.selftext)
             except:
                 await ctx.send('An error occured sending the post (too long) try again.')
+                full_str = str(post.selftext)
+                firstpart, secondpart = full_str[:len(full_str)/2], full_str[len(full_str)/2:]
 
 @bot.command()
 async def greentext(ctx):
@@ -126,10 +128,19 @@ async def nobodyhere(ctx):
 async def audiophile(ctx):
     await ctx.send(file=discord.File('audiophile.jpg'))
 
+@bot.command()
+async def ding(ctx):
+    try:
+        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('ding.webm'))
+        ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
+        ctx.voice_client.source.volume = 30
+    except AttributeError:
+        await ctx.send("Join me to a channel with !join first.")
+
 @bot.listen()
 async def on_message(message):
     if "jaded bot" in message.content.lower():
-        await message.channel.send('```Command List:\n!everquest <search> - Searches P99 Wiki and returns first result.\n!youtube <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!nobodyhere - There is nobody here.\n!audiophile - Inserts man listening to Edd Ed and Eddy Music.\n!greentext - Inserts a random greentext.```')
+        await message.channel.send('```Command List:\n!everquest <search> - Searches P99 Wiki and returns first result.\n!youtube <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!nobodyhere - There is nobody here.\n!audiophile - Inserts man listening to Edd Ed and Eddy Music.\n!greentext - Inserts a random greentext.\n!ding - Plays EQ sound effect.```')
         await bot.process_commands(message)
 
 

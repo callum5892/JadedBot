@@ -41,3 +41,4 @@ Commands:
 - !nobodyhere - Plays nobody here if the bot is in a voice channel.
 - !audiophile - Inserts a meme about audiophiles.
 - !greentext - Pulls a random greentext image (from /r/greentext).
+- !ding - Plays EQ ding sound effect.
