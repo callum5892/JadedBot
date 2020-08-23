@@ -20,8 +20,8 @@ class JadedBot(commands.Bot):
         self.TOKEN = self.config['JadedBot']['TOKEN']
         self.REDDIT_ID = self.config['JadedBot']['REDDIT_ID']
         self.REDDIT_SECRET = self.config['JadedBot']['REDDIT_SECRET']
-        self.command(aliases=['yt'])(self.youtube) # Need to tidy this up and make it modular.
-        self.command(aliases=['eq'])(self.everquest)
+        self.command()(self.youtube) # Need to tidy this up and make it modular.
+        self.command()(self.everquest)
         self.command()(self.ck2)
         self.command()(self.vaporwave)
         self.command()(self.shitpost)
@@ -29,7 +29,7 @@ class JadedBot(commands.Bot):
         self.command()(self.redpill)
         self.command()(self.join)
         self.command()(self.leave)
-        self.command(aliases=['nobody'])(self.nobodyhere)
+        self.command()(self.nobodyhere)
         self.command()(self.audiophile)
         self.command()(self.ding)
         self.command()(self.jaded)
@@ -155,7 +155,7 @@ class JadedBot(commands.Bot):
             
             
     async def jaded(self, ctx):
-        await ctx.send('```Command List:\n!jaded - Prints this command list.\n!everquest, !eq <search> - Searches P99 Wiki and returns first result.\n!youtube, !yt <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!nobodyhere, !nobody - There is nobody here.\n!audiophile - Inserts man listening to Edd Ed and Eddy Music.\n!greentext - Inserts a random greentext.\n!ding - Plays EQ sound effect.\n!stop - Stops current audio.\n!pause - Pauses current audio.\n!play - Resumes current audio.```')
+        await ctx.send('```Command List:\n!jaded - Prints this command list.\n!everquest <search> - Searches P99 Wiki and returns first result.\n!youtube <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!nobodyhere - There is nobody here.\n!audiophile - Inserts man listening to Edd Ed and Eddy Music.\n!greentext - Inserts a random greentext.\n!ding - Plays EQ sound effect.```')
         
         
     async def stop(self, ctx):

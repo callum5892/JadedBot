@@ -28,13 +28,13 @@ Start up the program with `$ python3 jaded.py`. It's best to run this in the bac
 ### Usage
 
 Commands:
-- !youtube, !yt <search> - Searches YouTube and returns the first video found.
+- !youtube <search> - Searches YouTube and returns the first video found.
 - !ck2 <search> - Searches the Crusader Kings II Wiki and returns the first page.
-- !everquest, !eq <search> - Searches the Project 1999 Wiki and returns the first page. 
+- !everquest <search> - Searches the Project 1999 Wiki and returns the first page. 
 - !vaporwave - Returns a random vaporwave themed video from youtube.
 - !join - Joins the voice channel of the user who typed the command.
 - !leave - Leaves the current channel the bot is in.
-- !nobodyhere, !nobody - Starts playing nobodyhere.
+- !nobodyhere - Starts playing nobodyhere.
 - !shitpost - Professionally starts shitposting (Posts a random post from /r/copypasta).
 - !redpill - Drops an Alex Jones quote.
 - !audiophile - Inserts a meme about audiophiles.
