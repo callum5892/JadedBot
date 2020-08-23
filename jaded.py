@@ -46,6 +46,10 @@ async def everquest(ctx, *, search):
     eq_string = wiki_search(search, 'everquest')
     await ctx.send('' + eq_string)
 
+@bot.command() # Ghetto function override before we rewrite into a class
+async def eq(ctx, *, search):
+    eq_string = wiki_search(search, 'everquest')
+    await ctx.send('' + eq_string)
 
 @bot.command()
 async def youtube(ctx, *, search):
@@ -55,11 +59,13 @@ async def youtube(ctx, *, search):
     await ctx.send(result['search_result'][0]['title'] + " " + str(result['search_result'][0]['views']) + " views")
     await ctx.send(result['search_result'][0]['link'])
 
+
 @bot.command()
 async def ck2(ctx, *, search):
     ck_string = wiki_search(search, 'ck2')
     await ctx.send('' + ck_string)
-    
+
+
 @bot.command()
 async def vaporwave(ctx):
     search = SearchVideos('vaporwave', offset = 1, mode = "json", max_results = 25)
@@ -68,6 +74,7 @@ async def vaporwave(ctx):
     index = randint(0, 24)
     await ctx.send(result['search_result'][index]['title'] + " " + str(result['search_result'][index]['views']) + " views")
     await ctx.send(result['search_result'][index]['link'])
+
 
 @bot.command()
 async def shitpost(ctx):
@@ -80,9 +87,13 @@ async def shitpost(ctx):
                 await ctx.send(post.title)
                 await ctx.send(post.selftext)
             except:
-                await ctx.send('An error occured sending the post (too long) try again.')
+                #await ctx.send('An error occured sending the post (too long) try again.')
                 full_str = str(post.selftext)
-                firstpart, secondpart = full_str[:len(full_str)/2], full_str[len(full_str)/2:]
+                #print(type(len(full_str)))
+                firstpart, secondpart = full_str[:1999], full_str[1999:]
+                await ctx.send(firstpart)
+                await ctx.send(secondpart)
+
 
 @bot.command()
 async def greentext(ctx):
@@ -95,10 +106,13 @@ async def greentext(ctx):
                 await ctx.send(post.url)
             except:
                 await ctx.send('An error occured sending the image try again.')
+
+
 @bot.command()
 async def redpill(ctx):
     random_num = randint(0, len(quotes))
     await ctx.send(quotes[random_num])
+
 
 @bot.command()
 async def join(ctx, channel: discord.VoiceChannel="Jaded Bot Audio Room"):
@@ -108,12 +122,14 @@ async def join(ctx, channel: discord.VoiceChannel="Jaded Bot Audio Room"):
     except AttributeError:
         await ctx.send("You're not in a channel.")
 
+
 @bot.command()
 async def leave(ctx):
     try:
         await ctx.voice_client.disconnect()
     except AttributeError:
         await ctx.send("I'm not currently in a channel.")
+
 
 @bot.command()
 async def nobodyhere(ctx):
@@ -124,9 +140,11 @@ async def nobodyhere(ctx):
     except AttributeError:
         await ctx.send("Join me to a channel with !join first.")
 
+
 @bot.command()
 async def audiophile(ctx):
     await ctx.send(file=discord.File('audiophile.jpg'))
+
 
 @bot.command()
 async def ding(ctx):
@@ -136,6 +154,7 @@ async def ding(ctx):
         ctx.voice_client.source.volume = 30
     except AttributeError:
         await ctx.send("Join me to a channel with !join first.")
+
 
 @bot.listen()
 async def on_message(message):
