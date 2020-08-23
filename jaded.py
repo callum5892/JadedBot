@@ -35,7 +35,7 @@ class JadedBot(commands.Bot):
         self.command()(self.jaded)
         self.command()(self.stop)
         self.command()(self.pause)
-        self.command()(self.play()
+        self.command()(self.play)
      
      
     def wiki_search(self, search, wiki):
