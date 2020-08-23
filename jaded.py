@@ -34,6 +34,7 @@ class JadedBot(commands.Bot):
         self.command()(self.ding)
         self.command()(self.jaded)
         self.command()(self.stop)
+        self.command()(self.pause)
      
      
     def wiki_search(self, search, wiki):
@@ -158,6 +159,14 @@ class JadedBot(commands.Bot):
         
     async def stop(self, ctx):
         ctx.voice_client.stop()
+    
+    
+    async def pause(self, ctx):
+        ctx.voice_client.pause()
+        
+        
+    async def play(self, ctx):
+        ctx.voice_client.play()
 
 
 
