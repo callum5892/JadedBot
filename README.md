@@ -43,5 +43,3 @@ Commands:
 - !audiophile - Inserts a meme about audiophiles.
 - !greentext - Pulls a random greentext image (from /r/greentext).
 - !ding - Plays EQ ding sound effect.
-- !greentext - Inserts greentext (from /r/greentext).
-- !audiophile - Inserts audiofile meme.
