@@ -20,7 +20,7 @@ class JadedBot(commands.Bot):
         self.TOKEN = self.config['JadedBot']['TOKEN']
         self.REDDIT_ID = self.config['JadedBot']['REDDIT_ID']
         self.REDDIT_SECRET = self.config['JadedBot']['REDDIT_SECRET']
-        self.command()(self.youtube)
+        self.command()(self.youtube) # Need to tidy this up and make it modular.
         self.command()(self.everquest)
         self.command()(self.ck2)
         self.command()(self.vaporwave)
@@ -131,9 +131,12 @@ class JadedBot(commands.Bot):
             
     async def nobodyhere(self, ctx):
         try:
+            channel = ctx.author.voice.channel
+            await channel.connect()
             source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('nobody.webm'))
-            ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
             ctx.voice_client.source.volume = 30
+            ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
+            await ctx.voice_client.disconnect()
         except AttributeError:
             await ctx.send("Join me to a channel with !join first.")
             
@@ -144,9 +147,12 @@ class JadedBot(commands.Bot):
         
     async def ding(self, ctx):
         try:
+            channel = ctx.author.voice.channel
+            await channel.connect()
             source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('ding.webm'))
-            ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
             ctx.voice_client.source.volume = 30
+            ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
+            await ctx.voice_client.disconnect()
         except AttributeError:
             await ctx.send("Join me to a channel with !join first.")
             
