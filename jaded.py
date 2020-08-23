@@ -167,7 +167,7 @@ class JadedBot(commands.Bot):
         
         
     async def play(self, ctx):
-        ctx.voice_client.play()
+        ctx.voice_client.resume()
 
 
 
