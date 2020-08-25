@@ -181,7 +181,7 @@ class JadedBot(commands.Bot):
         ctx.voice_client.resume()
         
 
-    async def anime(self, ctx):
+    async def popping(self, ctx):
         try:
             source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('popping.mp3'))
             ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
