@@ -43,3 +43,4 @@ Commands:
 - !play - Resumes stopped audio.
 - !stop - Stops current audio.
 - !pause - Pauses current audio.
+- !popping - Plays whats popping audio.
