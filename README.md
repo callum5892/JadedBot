@@ -44,3 +44,4 @@ Commands:
 - !stop - Stops current audio.
 - !pause - Pauses current audio.
 - !popping - Plays whats popping audio.
+- !ramranch, !ram - Plays Ram Ranch.
