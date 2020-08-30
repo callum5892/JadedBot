@@ -45,4 +45,5 @@ Commands:
 - !pause - Pauses current audio.
 - !popping - Plays whats popping audio.
 - !ramranch, !ram - Plays Ram Ranch.
+- !ramranch85, !ram85 - Plays Ram Ranch.
 - !nice - Click. Nice.
