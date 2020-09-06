@@ -23,6 +23,7 @@ class JadedBot(commands.Bot):
         self.command(aliases=['yt'])(self.youtube) # Need to tidy this up and make it modular.
         self.command(aliases=['eq'])(self.everquest)
         self.command()(self.ck2)
+        self.command()(self.ck3)
         self.command()(self.vaporwave)
         self.command()(self.shitpost)
         self.command()(self.greentext)
@@ -50,6 +51,9 @@ class JadedBot(commands.Bot):
         if wiki == 'ck2':
             end_url = 'https://ck2.paradoxwikis.com'
             query_url = 'https://ck2.paradoxwikis.com/index.php?search={0}&title=Special:Search&profile=default&fulltext=1'.format(search.replace(" ", "+"))
+        if wiki == 'ck3':
+            end_url = 'https://ck3.paradoxwikis.com'
+            query_url = 'https://ck3.paradoxwikis.com/index.php?search={0}&title=Special:Search&profile=default&fulltext=1'.format(search.replace(" ", "+"))
         try:
             page = requests.get(query_url).text
             soup = BeautifulSoup(page, 'html.parser')
@@ -75,6 +79,11 @@ class JadedBot(commands.Bot):
      
     async def ck2(self, ctx, *, search):
         ck_string = self.wiki_search(search, 'ck2')
+        await ctx.send('' + ck_string)
+        
+
+    async def ck3(self, ctx, *, search):
+        ck_string = self.wiki_search(search, 'ck3')
         await ctx.send('' + ck_string)
         
     
@@ -169,7 +178,7 @@ class JadedBot(commands.Bot):
             
             
     async def jaded(self, ctx):
-        await ctx.send('```Command List:\n!jaded - Prints this command list.\n!everquest, !eq <search> - Searches P99 Wiki and returns first result.\n!youtube, !yt <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!nobodyhere, !nobody - There is nobody here.\n!audiophile - Inserts man listening to Edd Ed and Eddy Music.\n!greentext - Inserts a random greentext.\n!ding - Plays EQ sound effect.\n!stop - Stops current audio.\n!pause - Pauses current audio.\n!play - Resumes current audio.\n!anime, !wow - Plays the woooow anime sound.\n!popping - Whats pawppping.\n!ramranch, !ram - Plays Ram Ranch.\n!ramranch85, !ram85 - Plays Ram Ranch 85\n!nice - Click. Nice.```')
+        await ctx.send('```Command List:\n!jaded - Prints this command list.\n!everquest, !eq <search> - Searches P99 Wiki and returns first result.\n!youtube, !yt <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!ck3 <search> - Searches CK3 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!nobodyhere, !nobody - There is nobody here.\n!audiophile - Inserts man listening to Edd Ed and Eddy Music.\n!greentext - Inserts a random greentext.\n!ding - Plays EQ sound effect.\n!stop - Stops current audio.\n!pause - Pauses current audio.\n!play - Resumes current audio.\n!anime, !wow - Plays the woooow anime sound.\n!popping - Whats pawppping.\n!ramranch, !ram - Plays Ram Ranch.\n!ramranch85, !ram85 - Plays Ram Ranch 85\n!nice - Click. Nice.```')
         
         
     async def stop(self, ctx):
