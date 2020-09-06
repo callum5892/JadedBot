@@ -42,6 +42,7 @@ class JadedBot(commands.Bot):
         self.command(aliases=['ram'])(self.ramranch)
         self.command(aliases=['ram85'])(self.ramranch85)
         self.command()(self.nice)
+        self.command()(self.poopsock)
      
      
     def wiki_search(self, search, wiki):
@@ -163,6 +164,14 @@ class JadedBot(commands.Bot):
         except AttributeError:
             await ctx.send("Join me to a channel with !join first.")
             
+    async def poopsock(self, ctx):
+        try:
+            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('poopsock.webm'))
+            ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
+            ctx.voice_client.source.volume = 30
+        except AttributeError:
+            await ctx.send("Join me to a channel with !join first.")
+            
             
     async def audiophile(self, ctx):
         await ctx.send(file=discord.File('audiophile.jpg'))
@@ -178,7 +187,7 @@ class JadedBot(commands.Bot):
             
             
     async def jaded(self, ctx):
-        await ctx.send('```Command List:\n!jaded - Prints this command list.\n!everquest, !eq <search> - Searches P99 Wiki and returns first result.\n!youtube, !yt <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!ck3 <search> - Searches CK3 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!nobodyhere, !nobody - There is nobody here.\n!audiophile - Inserts man listening to Edd Ed and Eddy Music.\n!greentext - Inserts a random greentext.\n!ding - Plays EQ sound effect.\n!stop - Stops current audio.\n!pause - Pauses current audio.\n!play - Resumes current audio.\n!anime, !wow - Plays the woooow anime sound.\n!popping - Whats pawppping.\n!ramranch, !ram - Plays Ram Ranch.\n!ramranch85, !ram85 - Plays Ram Ranch 85\n!nice - Click. Nice.```')
+        await ctx.send('```Command List:\n!jaded - Prints this command list.\n!everquest, !eq <search> - Searches P99 Wiki and returns first result.\n!youtube, !yt <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!ck3 <search> - Searches CK3 Wiki and returns first result.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!nobodyhere, !nobody - There is nobody here.\n!audiophile - Inserts man listening to Edd Ed and Eddy Music.\n!greentext - Inserts a random greentext.\n!ding - Plays EQ sound effect.\n!stop - Stops current audio.\n!pause - Pauses current audio.\n!play - Resumes current audio.\n!anime, !wow - Plays the woooow anime sound.\n!popping - Whats pawppping.\n!ramranch, !ram - Plays Ram Ranch.\n!ramranch85, !ram85 - Plays Ram Ranch 85\n!nice - Click. Nice.\n!poopsock - Plays when mom find poop sock.```')
         
         
     async def stop(self, ctx):
