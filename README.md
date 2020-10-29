@@ -31,6 +31,7 @@ Commands:
 - !youtube, !yt <search> - Searches YouTube and returns the first video found.
 - !ck2 <search> - Searches the Crusader Kings II Wiki and returns the first page.
 - !everquest, !eq <search> - Searches the Project 1999 Wiki and returns the first page. 
+- !rs <search> - Searches the OSRS Wiki and returns the first page. 
 - !vaporwave - Returns a random vaporwave themed video from youtube.
 - !join - Joins the voice channel of the user who typed the command.
 - !leave - Leaves the current channel the bot is in.
