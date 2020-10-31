@@ -44,6 +44,7 @@ class JadedBot(commands.Bot):
         self.command(aliases=['ram85'])(self.ramranch85)
         self.command()(self.nice)
         self.command()(self.poopsock)
+        #self.command()(self.ytplay)
      
      
     def wiki_search(self, search, wiki):
@@ -158,7 +159,7 @@ class JadedBot(commands.Bot):
             
     async def nobodyhere(self, ctx):
         try:
-            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('nobody.webm'))
+            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('assets/nobody.webm'))
             ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
             ctx.voice_client.source.volume = 30
         except AttributeError:
@@ -167,7 +168,7 @@ class JadedBot(commands.Bot):
     
     async def anime(self, ctx):
         try:
-            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('anime.webm'))
+            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('assets/anime.webm'))
             ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
             ctx.voice_client.source.volume = 30
         except AttributeError:
@@ -175,7 +176,7 @@ class JadedBot(commands.Bot):
             
     async def poopsock(self, ctx):
         try:
-            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('poopsock.webm'))
+            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('assets/poopsock.webm'))
             ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
             ctx.voice_client.source.volume = 30
         except AttributeError:
@@ -183,12 +184,12 @@ class JadedBot(commands.Bot):
             
             
     async def audiophile(self, ctx):
-        await ctx.send(file=discord.File('audiophile.jpg'))
+        await ctx.send(file=discord.File('assets/audiophile.jpg'))
         
         
     async def ding(self, ctx):
         try:
-            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('ding.webm'))
+            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('assets/ding.webm'))
             ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
             ctx.voice_client.source.volume = 30
         except AttributeError:
@@ -196,7 +197,7 @@ class JadedBot(commands.Bot):
             
             
     async def jaded(self, ctx):
-        await ctx.send('```Command List:\n!jaded - Prints this command list.\n!everquest, !eq <search> - Searches P99 Wiki and returns first result.\n!youtube, !yt <search> - Searches youtube and returns first video.\n!ck2 <search> - Searches CK2 Wiki and returns first result.\n!ck3 <search> - Searches CK3 Wiki and returns first result.\n!rs <search> - Searches OSRS Wiki.\n!vaporwave - Returns random vaporwave track.\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!nobodyhere, !nobody - There is nobody here.\n!audiophile - Inserts man listening to Edd Ed and Eddy Music.\n!greentext - Inserts a random greentext.\n!ding - Plays EQ sound effect.\n!stop - Stops current audio.\n!pause - Pauses current audio.\n!play - Resumes current audio.\n!anime, !wow - Plays the woooow anime sound.\n!popping - Whats pawppping.\n!ramranch, !ram - Plays Ram Ranch.\n!ramranch85, !ram85 - Plays Ram Ranch 85\n!nice - Click. Nice.\n!poopsock - Plays when mom find poop sock.```')
+        await ctx.send('```Command List:\nHelp:\n!jaded - Prints this command list.\n\nWiki Searching:\n!everquest, !eq <search> - Searches P99 Wiki.\n!ck2 <search> - Searches CK2 Wiki.\n!ck3 <search> - Searches CK3 Wiki.\n!rs <search> - Searches OSRS Wiki.\n\nYoutube:\n!youtube, !yt <search> - Searches youtube and returns first video.\n!vaporwave - Returns random vaporwave track.\n\nMisc:\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!audiophile - Inserts man listening to Edd Ed and Eddy Music.\n!greentext - Inserts a random greentext.\n\nAudio Controls:\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!stop - Stops current audio.\n!pause - Pauses current audio.\n!play - Resumes current audio.\n\nSounds:\n!nobodyhere, !nobody - There is nobody here.\n!ding - Plays EQ sound effect.\n!anime, !wow - Plays the woooow anime sound.\n!popping - Whats pawppping.\n!ramranch, !ram - Plays Ram Ranch.\n!ramranch85, !ram85 - Plays Ram Ranch 85\n!nice - Click. Nice.\n!poopsock - Plays when mom find poop sock.```')
         
         
     async def stop(self, ctx):
@@ -210,10 +211,27 @@ class JadedBot(commands.Bot):
     async def play(self, ctx):
         ctx.voice_client.resume()
         
+    
+    #async def ytplay(self, ctx, *, search): # Broken atm because of DMCA on youtube-dl
+    #    search = SearchVideos(search, offset = 1, mode = "json", max_results = 1)
+    #    result = search.result()
+    #    result = json.loads(result)
+    #    #ydl_opts = {'outtmpl': '/tmp/track.mpa'}
+    #    with youtube_dl.YoutubeDL({'format':'140', 'outtmpl': '/tmp/track.mpa'}) as ydl:
+    #        print(result['search_result'][0]['link'])
+    #        ydl.download([result['search_result'][0]['link']])
+    #        
+    #    try:
+    #        source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('/tmp/track.mpa'))
+    #        ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
+    #        ctx.voice_client.source.volume = 30
+    #    except AttributeError:
+    #        await ctx.send("Join me to a channel with !join first.")
+        
 
     async def popping(self, ctx):
         try:
-            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('popping.mp3'))
+            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('assets/popping.mp3'))
             ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
             ctx.voice_client.source.volume = 30
         except AttributeError:
@@ -222,7 +240,7 @@ class JadedBot(commands.Bot):
     
     async def ramranch(self, ctx):
         try:
-            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('ram.webm'))
+            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('assets/ram.webm'))
             ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
             ctx.voice_client.source.volume = 30
         except AttributeError:
@@ -231,7 +249,7 @@ class JadedBot(commands.Bot):
     
     async def ramranch85(self, ctx):
         try:
-            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('ram85.webm'))
+            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('assets/ram85.webm'))
             ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
             ctx.voice_client.source.volume = 30
         except AttributeError:
@@ -240,7 +258,7 @@ class JadedBot(commands.Bot):
 
     async def nice(self, ctx):
         try:
-            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('nice.webm'))
+            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('assets/nice.webm'))
             ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
             ctx.voice_client.source.volume = 30
         except AttributeError:
