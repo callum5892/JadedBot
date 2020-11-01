@@ -27,24 +27,39 @@ Start up the program with `$ python3 jaded.py`. It's best to run this in the bac
 
 ### Usage
 
-Commands:
-- !youtube, !yt <search> - Searches YouTube and returns the first video found.
-- !ck2 <search> - Searches the Crusader Kings II Wiki and returns the first page.
-- !everquest, !eq <search> - Searches the Project 1999 Wiki and returns the first page. 
-- !rs <search> - Searches the OSRS Wiki and returns the first page. 
-- !vaporwave - Returns a random vaporwave themed video from youtube.
-- !join - Joins the voice channel of the user who typed the command.
-- !leave - Leaves the current channel the bot is in.
-- !nobodyhere, !nobody - Starts playing nobodyhere.
-- !shitpost - Professionally starts shitposting (Posts a random post from /r/copypasta).
-- !redpill - Drops an Alex Jones quote.
-- !audiophile - Inserts a meme about audiophiles.
-- !greentext - Pulls a random greentext image (from /r/greentext).
-- !ding - Plays EQ ding sound effect.
-- !play - Resumes stopped audio.
-- !stop - Stops current audio.
-- !pause - Pauses current audio.
-- !popping - Plays whats popping audio.
-- !ramranch, !ram - Plays Ram Ranch.
-- !ramranch85, !ram85 - Plays Ram Ranch.
-- !nice - Click. Nice.
+Command List:
+Help:
+!jaded - Prints this command list.
+
+Wiki Searching:
+!everquest, !eq <search> - Searches P99 Wiki.
+!ck2 <search> - Searches CK2 Wiki.
+!ck3 <search> - Searches CK3 Wiki.
+!rs <search> - Searches OSRS Wiki.
+
+Youtube:
+!youtube, !yt <search> - Searches youtube and returns first video.
+!vaporwave - Returns random vaporwave track.
+
+Misc:
+!shitpost - Professionally shitposts in chat.
+!redpill - Drops some fresh redpills from Alex Jones.
+!audiophile - Inserts man listening to Edd Ed and Eddy Music.
+!greentext - Inserts a random greentext.
+
+Audio Controls:
+!join - Joins the bot to the voice channel you're currently in.
+!leave - Leaves the voice channel the bot is currently in.
+!stop - Stops current audio.
+!pause - Pauses current audio.
+!play - Resumes current audio.
+
+Sounds:
+!nobodyhere, !nobody - There is nobody here.
+!ding - Plays EQ sound effect.
+!anime, !wow - Plays the woooow anime sound.
+!popping - Whats pawppping.
+!ramranch, !ram - Plays Ram Ranch.
+!ramranch85, !ram85 - Plays Ram Ranch 85
+!nice - Click. Nice.
+!poopsock - Plays when mom find poop sock.
