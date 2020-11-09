@@ -183,7 +183,7 @@ class JadedBot(commands.Bot):
         except AttributeError:
             await ctx.send("Join me to a channel with !join first.")
             
-    async def betterpoopsock(self, ctx):
+    async def betterpoop(self, ctx):
         try:
             source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('assets/poopsockbetter.webm'))
             ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
