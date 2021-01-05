@@ -11,6 +11,8 @@ from youtubesearchpython import SearchVideos
 from discord.ext import commands
 from bs4 import BeautifulSoup
 
+from coinflip import coinflip
+
 class JadedBot(commands.Bot):
     def __init__(self, bot):
         super().__init__(command_prefix='!')
@@ -47,8 +49,10 @@ class JadedBot(commands.Bot):
         self.command()(self.betterpoop)
         self.command()(self.augh)
         #self.command()(self.ytplay)
-     
-     
+
+        # My commands
+        self.command(aliases=['cf'])(self.coinflip)
+
     def wiki_search(self, search, wiki):
         if wiki == 'everquest':
             end_url = 'https://wiki.project1999.com'
@@ -280,6 +284,14 @@ class JadedBot(commands.Bot):
             ctx.voice_client.source.volume = 30
         except AttributeError:
             await ctx.send("Join me to a channel with !join first.")
+
+        # My functions
+
+    async def coinflip(self, ctx):
+        random_num = randint(0, len(coinflip))
+        await ctx.send(coinflip[random_num])        
+
+
             
 bot = commands.Bot(command_prefix='!', description="Jaded Bot")
 jaded = JadedBot(bot)

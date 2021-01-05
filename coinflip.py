@@ -1,0 +1,1 @@
+coinflip = ["Heads", "Tails", "Heads", "Tails"]
