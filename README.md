@@ -47,6 +47,7 @@ Misc:
 !redpill - Drops some fresh redpills from Alex Jones.
 !audiophile - Inserts man listening to Edd Ed and Eddy Music.
 !greentext - Inserts a random greentext.
+!coinflip - Does a coinflip
 
 Audio Controls:
 !join - Joins the bot to the voice channel you're currently in.
