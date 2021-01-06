@@ -13,6 +13,7 @@ from bs4 import BeautifulSoup
 
 from coinflip import coinflip
 
+
 class JadedBot(commands.Bot):
     def __init__(self, bot):
         super().__init__(command_prefix='!')
@@ -53,6 +54,7 @@ class JadedBot(commands.Bot):
         # My commands
         self.command(aliases=['cf'])(self.coinflip)
 
+        # Command Functions
     def wiki_search(self, search, wiki):
         if wiki == 'everquest':
             end_url = 'https://wiki.project1999.com'
@@ -210,7 +212,7 @@ class JadedBot(commands.Bot):
             
             
     async def jaded(self, ctx):
-        await ctx.send('```Command List:\nHelp:\n!jaded - Prints this command list.\n\nWiki Searching:\n!everquest, !eq <search> - Searches P99 Wiki.\n!ck2 <search> - Searches CK2 Wiki.\n!ck3 <search> - Searches CK3 Wiki.\n!rs <search> - Searches OSRS Wiki.\n\nYoutube:\n!youtube, !yt <search> - Searches youtube and returns first video.\n!vaporwave - Returns random vaporwave track.\n\nMisc:\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!audiophile - Inserts man listening to Edd Ed and Eddy Music.\n!greentext - Inserts a random greentext.\n\nAudio Controls:\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!stop - Stops current audio.\n!pause - Pauses current audio.\n!play - Resumes current audio.\n\nSounds:\n!nobodyhere, !nobody - There is nobody here.\n!ding - Plays EQ sound effect.\n!anime, !wow - Plays the woooow anime sound.\n!popping - Whats pawppping.\n!ramranch, !ram - Plays Ram Ranch.\n!ramranch85, !ram85 - Plays Ram Ranch 85\n!nice - Click. Nice.\n!poopsock - Plays when mom find poop sock.\n!betterpoop - Mom find poopsock better version.\n!augh - AUGH?!.```')
+        await ctx.send('```Command List:\nHelp:\n!jaded - Prints this command list.\n\nWiki Searching:\n!everquest, !eq <search> - Searches P99 Wiki.\n!ck2 <search> - Searches CK2 Wiki.\n!ck3 <search> - Searches CK3 Wiki.\n!rs <search> - Searches OSRS Wiki.\n\nYoutube:\n!youtube, !yt <search> - Searches youtube and returns first video.\n!vaporwave - Returns random vaporwave track.\n\nMisc:\n!shitpost - Professionally shitposts in chat.\n!redpill - Drops some fresh redpills from Alex Jones.\n!audiophile - Inserts man listening to Edd Ed and Eddy Music.\n!greentext - Inserts a random greentext.\n!coinflip - Flips a coin\n\nAudio Controls:\n!join - Joins the bot to the voice channel you\'re currently in.\n!leave - Leaves the voice channel the bot is currently in.\n!stop - Stops current audio.\n!pause - Pauses current audio.\n!play - Resumes current audio.\n\nSounds:\n!nobodyhere, !nobody - There is nobody here.\n!ding - Plays EQ sound effect.\n!anime, !wow - Plays the woooow anime sound.\n!popping - Whats pawppping.\n!ramranch, !ram - Plays Ram Ranch.\n!ramranch85, !ram85 - Plays Ram Ranch 85\n!nice - Click. Nice.\n!poopsock - Plays when mom find poop sock.\n!betterpoop - Mom find poopsock better version.\n!augh - AUGH?!.```')
         
         
     async def stop(self, ctx):
@@ -292,8 +294,15 @@ class JadedBot(commands.Bot):
         await ctx.send(coinflip[random_num])        
 
 
-            
+    
+        # Event Handlers and Other stuff
 bot = commands.Bot(command_prefix='!', description="Jaded Bot")
 jaded = JadedBot(bot)
+
+@jaded.event
+async def on_ready():
+    print('We have logged in as {0.user}'.format(jaded))
+    await jaded.change_presence(activity=discord.Game('Use !help'))
+
 
 jaded.run(jaded.TOKEN)
