@@ -2,3 +2,4 @@ configfile
 *.swp
 __pycache__
 .vscode/settings.json
+discord.log

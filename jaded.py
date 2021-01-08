@@ -10,10 +10,17 @@ from random import randint
 from youtubesearchpython import SearchVideos
 from discord.ext import commands
 from bs4 import BeautifulSoup
+#import logging
 
 from coinflip import coinflip
 
-
+################Logger###############
+##logger = logging.getLogger('discord')
+##logger.setLevel(logging.WARNING)
+##handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w')
+##handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
+##logger.addHandler(handler)
+#####################################
 class JadedBot(commands.Bot):
     def __init__(self, bot):
         super().__init__(command_prefix='!')
