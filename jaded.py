@@ -23,10 +23,10 @@ from coinflip import coinflip
 #####################################
 class JadedBot(commands.Bot):
     def __init__(self, bot):
-        super().__init__(command_prefix='.')
+        super().__init__(command_prefix=self.PREFIX)
         self.config = configparser.ConfigParser()
         self.config.read('configfile')
-
+        self.PREFIX = self.config['JadedBot']['PREFIX']
         self.TOKEN = self.config['JadedBot']['TOKEN']
         self.REDDIT_ID = self.config['JadedBot']['REDDIT_ID']
         self.REDDIT_SECRET = self.config['JadedBot']['REDDIT_SECRET']
@@ -318,7 +318,7 @@ jaded = JadedBot(bot)
 @jaded.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(jaded))
-    await jaded.change_presence(activity=discord.Game('Use .help'))
+    await jaded.change_presence(activity=discord.Game('Use !help'))
 
 
 jaded.run(jaded.TOKEN)
