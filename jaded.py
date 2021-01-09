@@ -23,10 +23,10 @@ from coinflip import coinflip
 #####################################
 class JadedBot(commands.Bot):
     def __init__(self, bot):
-        super().__init__(command_prefix=self.PREFIX)
+        super().__init__(command_prefix='!')
         self.config = configparser.ConfigParser()
         self.config.read('configfile')
-        self.PREFIX = self.config['JadedBot']['PREFIX']
+
         self.TOKEN = self.config['JadedBot']['TOKEN']
         self.REDDIT_ID = self.config['JadedBot']['REDDIT_ID']
         self.REDDIT_SECRET = self.config['JadedBot']['REDDIT_SECRET']
