@@ -60,6 +60,7 @@ class JadedBot(commands.Bot):
 
         # My commands
         self.command(aliases=['cf'])(self.coinflip)
+        self.command()(self.lamar)
 
         # Command Functions
     def wiki_search(self, search, wiki):
@@ -299,6 +300,14 @@ class JadedBot(commands.Bot):
     async def coinflip(self, ctx):
         random_num = randint(0, len(coinflip))
         await ctx.send(coinflip[random_num])        
+
+    async def lamar(self, ctx):
+        try:
+            source = discord.PCMVolumeTransformer(discord.FFmpegPCMAudio('assets/lamar.mp3'))
+            ctx.voice_client.play(source, after=lambda e: print('Player error: %s' % e) if e else None)
+            ctx.voice_client.source.volume = 30
+        except AttributeError:
+            await ctx.send("Join me to a channel with !join first.")
 
 
     
