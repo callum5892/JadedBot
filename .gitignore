@@ -3,3 +3,5 @@ configfile
 __pycache__
 .vscode/settings.json
 discord.log
+*.exe
+tmp/
